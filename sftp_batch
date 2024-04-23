@@ -1,0 +1,2 @@
+cd /public_html
+put -r /home/whitehotrobot/000assets/dist_public/*
