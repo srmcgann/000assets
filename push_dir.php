@@ -45,7 +45,7 @@
       'ftp_pass'    => 'iOFWM03Om1SRTI',
       'local_dir'   => '/home/scottmcgann4/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
-    ],
+    ],[
     'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'fishable-searches',
       'ftp_pass'   => 'Chrome57253!*',
