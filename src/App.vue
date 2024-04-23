@@ -7,6 +7,7 @@
     <UserSettings        :state="state" v-if="state.userSettingsVisible" />
     <LoginPrompt         :state="state" v-if="state.showLoginPrompt" />
     <Admin               :state="state" v-if="showAdminButton" />
+    <Stats               :state="state" v-if="state.showStats" />
     <Collections         :state="state" v-if="state.showCollections" />
     <EditCollection      :state="state" v-if="state.editCollection.length"
                          :collection="state.editCollection[0]" />
@@ -32,6 +33,7 @@
 <script>
 import Main from './components/Main'
 import Modal from './components/Modal'
+import Stats from './components/Stats'
 import Admin from './components/Admin'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -49,6 +51,7 @@ export default {
   components: {
     Main,
     Modal,
+    Stats,
     Admin,
     Footer,
     Header,
@@ -141,6 +144,7 @@ export default {
         username: '',
         userView: false,
         prettyDate: null,
+        showStats: false,
         firstSeen: null,
         password: '',
         showUserSettings: null,
@@ -912,7 +916,7 @@ export default {
       let vars = window.location.pathname.split('/').filter(v=>v && ''+v != 'NaN')
       if(vars.length>0){
         console.log('vars', vars)
-        let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 0 : 0
+        let l = location.origin.toLowerCase().indexOf('000webhostapp.com') !== -1 ? 1 : 0
         if(this.state.isNumber(vars[l])){
           this.state.mode = 'default'
           let search = ''
@@ -923,8 +927,6 @@ export default {
             if(vars[l+1]){
               this.state.search.string = decodeURIComponent(vars[l+1])
               search = '/' + vars[l+1]
-              //history.pushState(null,null,this.URLbase + '/' + (this.state.curPage + 1)) + search
-              //this.beginSearch()
               this.state.curPage = 0
               this.state.jumpToPage(0)
               console.log('flow ',1)
