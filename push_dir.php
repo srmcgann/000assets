@@ -3,47 +3,41 @@
   // RECURSIVE DIRECTORY FTP PUSH
 
   $servers = [
-    /*[
-      'ftp_server' => 'files.000webhost.com',
-      'ftp_user'   => 'orbstools',
-      'ftp_pass'   => 'Chrome57253!*',
-      'local_dir'  => '/home/scottmcgann4/000assets/dist_public',
-      'remote_dir' => '/public_html/assets',
-    ],*/[
+    [ 
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35615011',
       'ftp_pass'    => 'ouVkeSu5FegeH',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680091',
       'ftp_pass'    => 'kjiGQM2DqnhUAuU',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680402',
       'ftp_pass'    => 'nBbQv0M3POyp',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35680488',
       'ftp_pass'    => '9K12EE4mmF3yi',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35681218',
       'ftp_pass'    => 'siann2ji7AGh',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
       'ftp_server'  => "ftpupload.net",
       'ftp_user'    => 'if0_35686192',
       'ftp_pass'    => 'iOFWM03Om1SRTI',
-      'local_dir'   => '~/imjur.000.pe/dist_public',
+      'local_dir'   => '/home/whitehotrobot/imjur.000.pe/dist_public',
       'remote_dir'  => '/htdocs/assets'
     ],[
     'ftp_server' => 'files.000webhost.com',
@@ -95,6 +89,7 @@
       'remote_dir' => '/public_html/assets',
     ],
   ];
+
 
   function recurse($dir){
     global $remote_dir, $local_dir, $ftp;
