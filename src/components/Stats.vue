@@ -9,7 +9,7 @@
   </button>
   <div class="stats" ref="stats" tabindex="1000">
     <div class="modalInner" style="overflow: auto;">
-      overview<br>
+      overview of <b>{{state.loggedinUserName}}'s</b> assets<br>
       <table class="statsTable">
         <tr>
           <td class="tdLeft">assets</td>
@@ -24,66 +24,82 @@
           <th>thumb</th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='views'}"
               @click="setSortMode('views')"
-              v-html="`views [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`views<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='sizes'}"
               @click="setSortMode('sizes')"
-              v-html="`size [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`size<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='dates'}"
               @click="setSortMode('dates')"
-              v-html="`date [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`date<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='types'}"
               @click="setSortMode('types')"
-              v-html="`type [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`type<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='upvotes'}"
               @click="setSortMode('upvotes')"
-              v-html="`upvotes [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`upvotes<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='downvotes'}"
               @click="setSortMode('downvotes')"
-              v-html="`downvotes [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`downvotes<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
           <th>
             <button
+              :class="{'sortCol': sortMode=='avgvotes'}"
               @click="setSortMode('avgvotes')"
-              v-html="`avg votes [${sortDir ? 'asc' : 'desc'}]`"
+              v-html="`avg votes<br>[${sortDir ? 'asc' : 'desc'}]`"
             ></button>
           </th>
         </tr>
         <tr v-for="asset in sortedArray">
-          <td class="td">
+          <td class="tdRight">
             <div class="actualAsset" v-html="asset.slug"></div>
           </td>
           <td v-if="!asset.showPreview">
             <button @click="asset.showPreview=true">show</button>
           </td>
-          <td v-else-if="asset.filetype.indexOf('audio')!=-1" class="td"><a :href="state.URLbase + '/' + asset.href" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
-          <td v-else-if="asset.filetype.indexOf('image')!=-1" class="td"><a :href="state.URLbase + '/' + asset.href" target="_blank"><div :style="`background-image: url(${state.URLbase + '/' + asset.href});`" class="avatar"></div></a></td>
-          <td v-else-if="asset.filetype.indexOf('video')!=-1" class="td"><a :href="state.URLbase + '/' + asset.href" target="_blank"><video autoplay loop muted :src="state.URLbase + '/' + asset.href" class="avatar"></video></a></td>
+          <td v-else-if="asset.filetype.indexOf('audio')!=-1" class="tdRight"><a :href="state.URLbase + '/' + asset.href" target="_blank"><div :style="`background-image: url(${state.URLbase + '/musicNotes.svg'});`" class="avatar"></div></a></td>
+          <td v-else-if="asset.filetype.indexOf('image')!=-1" class="tdRight"><a :href="state.URLbase + '/' + asset.href" target="_blank"><div :style="`background-image: url(${state.URLbase + '/' + asset.href});`" class="avatar"></div></a></td>
+          <td v-else-if="asset.filetype.indexOf('video')!=-1" class="tdRight"><a :href="state.URLbase + '/' + asset.href" target="_blank"><video autoplay loop muted :src="state.URLbase + '/' + asset.href" class="avatar"></video></a></td>
           <td class="tdRight" v-html="asset.views"></td>
-          <td class="td">
+          <td class="tdRight">
             <div class="actualAsset" v-html="state.size(asset.size)"></div>
           </td>
-          <td class="td">
-            <div class="actualAsset" v-html="state.prettyDate(asset.date)"></div>
+          <td class="tdRight">
+            <div class="actualAsset" v-html="asset.date"></div>
           </td>
-          <td class="td">
+          <td class="tdRight">
             <div class="actualAsset" v-html="asset.filetype"></div>
+          </td>
+          <td class="tdRight">
+            <div class="actualAsset" v-html="asset.upvotes"></div>
+          </td>
+          <td class="tdRight">
+            <div class="actualAsset" v-html="asset.downvotes"></div>
+          </td>
+          <td class="tdRight">
+            <div class="actualAsset" v-html="(asset.upvotes + asset.downvotes)/2"></div>
           </td>
         </tr>
       </table>
@@ -230,12 +246,26 @@ export default {
     display: inline-block;
     width: unset;
   }
+  .modalInner{
+    height: 100vh;
+    padding-bottom: 200px;
+  }
+  button{
+    background: #40f;
+    color: #fff;
+  }
+  .sortCol{
+    background: #2fc;
+    color: #000;
+  }
   th{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .tdLeft, .tdRight{
+    padding: 5px;
     text-align: center;
+    font-size: 1.2em;
   }
   .avatar{
     width: 160px;
