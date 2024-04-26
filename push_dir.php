@@ -51,13 +51,13 @@
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '~/000assets/dist_public',
       'remote_dir' => '/public_html/assets',
-    ],[
+    ],/*[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'orbs4',
       'ftp_pass'   => 'Chrome57253!*',
       'local_dir'  => '~/000assets/dist_public',
       'remote_dir' => '/public_html/assets',
-    ],[
+    ],*/[
       'ftp_server' => 'files.000webhost.com',
       'ftp_user'   => 'efx2',
       'ftp_pass'   => 'Chrome57253!*',
