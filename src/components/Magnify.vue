@@ -49,8 +49,8 @@ export default {
         this.my = e.pageY
         this.$refs.magnifyingGlass.style.left = this.mx-200 + 'px'
         this.$refs.magnifyingGlass.style.top = this.my-200 + 'px'
-        this.contents.style.marginLeft = ((-this.mx+document.body.clientWidth/2+38)*(this.magLevel+1)-document.body.clientWidth/2) +'px'
-        this.contents.style.marginTop = (-this.my*(this.magLevel+1)+document.body.clientHeight/2*(this.magLevel+1)+38*(this.magLevel+1)*2) + 'px'
+        this.contents.style.marginLeft = ((-this.mx+document.body.clientWidth/2+38)*(this.magLevel+1)-this.element.clientWidth/2) +'px'
+        this.contents.style.marginTop = (-this.my*(this.magLevel+1)+this.element/2*(this.magLevel+1)+38*(this.magLevel+1)*2) + 'px'
       }
     }
   },
@@ -82,10 +82,10 @@ export default {
     cursor: crosshair;
   }
   .magup{
-    background-image: (../assets/mag.png);
+    background-image: url(../assets/mag.png);
   }
   .magdown{
-    background-image: (../assets/unmag.png);
+    background-image: url(../assets/unmag.png);
   }
   .magLevel{
     border: 3px solid #40f8;
