@@ -327,7 +327,7 @@ export default {
       if(userID) {
         let sendData = {
           userID,
-          passhash: this.state.passhash
+          //passhash: this.state.passhash
         }
         fetch(`${this.URLbase}/` + 'getStats.php',{
           method: 'POST',
