@@ -33,6 +33,7 @@
       class="assetDataButton noCommentsButton"
       title="view and edit your comments"
       v-if="!link.comments.length"
+      style="margin-left: 8px;"
     >be first to comment</button>
     <button
       @mousedown.stop.prevent
@@ -160,7 +161,7 @@ export default {
     return {
       showComment: false,
       commentIncrVal: 1,
-      numComments: Math.min(this.link.comments, this.state.numComments)
+      numComments: Math.min(this.link.comments.length, this.state.numComments)
     }
   },
   computed:{
